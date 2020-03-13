@@ -11,8 +11,6 @@ class DescriptionPage extends Component {
                 <Link to="/"><h2 className="center ">Back to home</h2></Link>
                 <p><strong>User ID: </strong>{this.props.match.params.description}</p>
                 {this.props.posts.map((post) => (post.title === this.props.match.params.description) && <Post post={post} key={post.id} />)}
-                    
-
             </>
         );
     }
