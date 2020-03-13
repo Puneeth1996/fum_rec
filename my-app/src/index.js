@@ -4,10 +4,33 @@ import "./index.css";
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import postReducer from './reducers/postReducer';
-import {loadState,saveState} from './localStorage'
 import throttle from 'lodash/throttle';
 
 import App from './App';
+
+const loadState = () => {
+    try {
+        const serializedState = localStorage.getItem('state');
+        if (serializedState === null) {
+        return undefined;
+        }
+        return JSON.parse(serializedState);
+    } catch (err) {
+        return undefined;
+    }
+};
+
+
+const saveState = (state) => {
+    console.log(state)
+    try {
+        const serializedState = JSON.stringify(state);
+        localStorage.setItem('state', serializedState);
+    } catch {
+      // ignore write errors
+    }
+};
+
 
 const persistedState = loadState();
 
@@ -18,9 +41,7 @@ const store = createStore(
 
 
 store.subscribe(throttle(() => {
-    saveState({
-        state: store.getState().postReducer
-    })
+    saveState(store.getState())
 }, 1000));
 
 
