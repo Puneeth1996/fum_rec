@@ -9,58 +9,6 @@ const IndexPage = () => {
 };
 
 class App extends Component {
-    
-  componentWillMount() {
-    localStorage.getItem('contacts') && this.setState({
-        contacts: JSON.parse(localStorage.getItem('contacts')),
-        isLoading: false
-    })
-  }
-
-
-  componentDidMount(){
-    const date = localStorage.getItem('contactsDate');
-    const contactsDate = date && new Date(parseInt(date));
-    const now = new Date();
-
-    const dataAge = Math.round((now - contactsDate) / (1000 * 60)); // in minutes
-    const tooOld = dataAge >= 1;
-
-    if(tooOld){
-        this.fetchData();            
-    } else {
-        console.log(`Using data from localStorage that are ${dataAge} minutes old.`);
-    }
-  }
-
-  fetchData(){
-    this.setState({
-        isLoading: true,
-        contacts: []
-    })
-
-    fetch('https://randomuser.me/api/?results=50&nat=us,dk,fr,gb')
-    .then(response => response.json())
-    .then(parsedJSON => parsedJSON.results.map(user => (
-        {
-            name: `${user.name.first} ${user.name.last}`,
-            username: `${user.login.username}`,
-            email: `${user.email}`,
-            location: `${user.location.street}, ${user.location.city}`
-        }
-    )))
-    .then(contacts => this.setState({
-        contacts,
-        isLoading: false
-    }))
-    .catch(error => console.log('parsing failed', error))
-  }
-
-  componentWillUpdate(nextProps, nextState) {
-    localStorage.setItem('contacts', JSON.stringify(nextState.contacts));
-    localStorage.setItem('contactsDate', Date.now());
-  }
-
 
   render() {
     return (
