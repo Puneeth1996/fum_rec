@@ -1,5 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import PostForm from './PostForm';
+import AllPost from './AllPost';
+import DescriptionPage from './DescriptionPage'
 import { Link, BrowserRouter as Router, Route } from "react-router-dom";
 
 
@@ -17,11 +19,11 @@ const users = [
 ];
 
 const IndexPage = () => {
-  return <h3>Home Page</h3>;
+  return <PostForm />;
 };
 
 const AboutPage = () => {
-  return <h3>About Page</h3>;
+  return (<h1>ABout PAge</h1>);
 };
 
 const UsersPage = () => {
@@ -59,15 +61,20 @@ const App = () => {
   return (
     <section className="App">
       <Router>
-        <Link to="/">Home</Link>
+        <Link to="/">Add</Link>
         <Link to="/about">About</Link>
         <Link to="/users">Users</Link>
         <Route exact path="/" component={IndexPage} />
+        
+        <Route exact path="/about" component={AllPost} />
+        <Route exact path="/about/:description" component={DescriptionPage} />
+
         <Route exact path="/users" component={UsersPage} />
         <Route exact path="/user/:userId" component={UserPage} />
-        <Route exact path="/about" component={AboutPage} />
       </Router>
       <a href="/about">about  |  with browser reload</a>
     </section>
   );
 };
+
+export default App;
