@@ -12,15 +12,14 @@ const App = () => {
     <section className="App">
       <Router>
         <Link to="/">Add</Link>
-        <Link to="/about">About</Link>
-        <Link to="/users">Users</Link>
+        <Link to="/job">Portal</Link>
         <Route exact path="/" component={IndexPage} />
         
-        <Route exact path="/about" component={AllPost} />
-        <Route exact path="/about/:description" component={DescriptionPage} />
+        <Route exact path="/job" component={AllPost} />
+        <Route exact path="/job/:description" component={DescriptionPage} />
 
       </Router>
-      <a href="/about">about  |  with browser reload</a>
+      <a href="/job"> Check Persistance | browser reload </a>
     </section>
   );
 };

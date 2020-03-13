@@ -5,7 +5,7 @@ class Post extends Component {
   render() {
     return (
       <div className="post">
-        <Link to={"/about/"+this.props.post.title}><h2 className="post_title">{this.props.post.title}</h2></Link>
+        <Link to={"/job/"+this.props.post.title}><h2 className="post_title">{this.props.post.title}</h2></Link>
         <p className="post_message">{this.props.post.message}</p>
 
         <p className="post_message">{this.props.post.numPos}</p>

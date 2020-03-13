@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Post from './Post';
 import EditComponent from './EditComponent';
-import JobLink from './JobLink';
 import { BrowserRouter,Switch,Route, } from "react-router-dom";
 
 class AllPost extends Component {
