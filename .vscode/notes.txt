@@ -1,0 +1,23 @@
+
+Create a job portal to list jobs, where the user would be able to create, update and delete the listed jobs. 
+
+On the default route:
+ list jobs with pagination (use indexedDB Or localstorage to store all jobs), give option to edit or delete each job. 
+ list a new job button
+
+On create job route:
+Job title
+Job description (user should be allowed to style his content, hence use a WYSIWYG editor) 
+Open positions
+Location
+Company name
+Required skills
+
+View job page:
+Create a layout to display all the details of the job
+Display related jobs (by #of skills matched) 
+
+Assignment will be rated on:
+Code quality
+User interface
+Degree of completion
